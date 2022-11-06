@@ -1,6 +1,5 @@
 // Display current day and time at the top of the planer
-var currentDay = moment().format('dddd, MMM Do YYYY');
-$("#currentDay").text(currentDay);
+$("#currentDay").text(moment().format("dddd, MMMM Do"));
 
 // Save task by clicking on button 
 $(document).ready(function () {
@@ -49,6 +48,9 @@ $(document).ready(function () {
         })
     }
     timeTracker();
+
+//Updates timeTracker function every second
+setInterval(timeTracker, (1000 * 60) * 30);
 })
 
 
