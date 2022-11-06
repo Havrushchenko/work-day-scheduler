@@ -12,7 +12,7 @@ $(document).ready(function () {
         var time = $(this).parent().attr("id");
         // Alert when user leave input field empty and click on saveBtn
         if (text === '') {
-            alert("No task to save!")
+            alert("No task to save!");
         } else {
             // Save data in local storage
             localStorage.setItem(time, text);
@@ -29,9 +29,6 @@ $(document).ready(function () {
             //  the attr grabs the id of .time-block
             //  then we split the 'hour' and grab the first index which is the number
             var blockTime = parseInt($(this).attr("id").split("hour")[1]);
-            // Load saved data from local storage
-            var id = $(this).attr('id')
-            $(this).children('textarea').val(localStorage.getItem(id))
             // Add the classes for background indicators and chanche a background color
             // If (blockTime < currentHour) then add .past class to the textarea of .time-block
             if (blockTime < currentHour) {
@@ -46,6 +43,9 @@ $(document).ready(function () {
                 $(this).addClass("future");
 
             }
+            // Load saved data from local storage
+            var id = $(this).attr('id');
+            $(this).children('textarea').val(localStorage.getItem(id));
         })
     }
     timeTracker();
