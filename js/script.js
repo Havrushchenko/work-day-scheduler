@@ -1,37 +1,23 @@
 // Display current day and time at the top of the planer
-var currentDay = moment().format('MMMM Do YYYY, h:mm:ss a');
+var currentDay = moment().format('dddd, MMM Do YYYY');
 $("#currentDay").text(currentDay);
 var hour = moment().hours();
 
 // Save task by clicking on button 
 $(document).ready(function () {
-    $(".saveBtn").one("click", function () {
-        var data = $(".textarea").val();
-        console.log(data);
-
-        // Set data to local storage
-        localStorage.setItem("data", data);
-        console.log("set data to local storage");
-        
-        // Get data from local storage
-        $(".textarea").val(localStorage.getItem(".textarea"));
-        console.log("get data from local storage");
-    });
-});
-
-function trackTheTime() {
-    $(".time-block").each(function () {
-        var timeBlock = parseInt($(this).attr("id"));
-        hour = parseInt(hour);
-        if (hour > timeBlock) {
-            $(this).addClass("past");
-        } else if (hour < timeBlock) {
-            $(this).addClass("future");
+    // saveBtn click listener 
+    $(".saveBtn").on("click", function () {
+        var text = $(this).siblings(".textarea").val();
+        var time = $(this).parent().attr("id");
+        if(text === '') {
+            alert("No task to save!")
         } else {
-            $(this).addClass("present");
+            // Save text in local storage
+            localStorage.setItem(time, text);
+            console.log(text, time);
         }
-    });
-}
+    })
+})
 
 
 
