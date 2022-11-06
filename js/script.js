@@ -49,7 +49,7 @@ $(document).ready(function () {
     }
     timeTracker();
 
-//Updates timeTracker function every second
+// Updates timeTracker function every 30 minutes
 setInterval(timeTracker, (1000 * 60) * 30);
 })
 
